@@ -1,0 +1,80 @@
+.body {
+    display: flex;
+    margin-top: 100px;
+    min-height: calc(100vh - 200px);
+}
+
+.qtyButton {
+    background-color: lightgray;
+    color: black;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    outline: 0;
+    border: none;
+    font-weight: 900;
+}
+
+.summary {
+    width: 40%;
+}
+
+.infoEng {
+    background-color: rgb(212, 210, 210);
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 10%;
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.infoAr {
+    background-color: rgb(212, 210, 210);
+    text-align: center;
+    margin-right: 30%;
+    margin-top: 10%;
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.orderSummary {
+    width: 100%;
+    text-align: start;
+}
+
+.orderSummaryInfo .line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    width: 60%;
+}
+
+@media screen and (max-width: 899px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20%;
+        margin-top: 0;
+        height: auto;
+    }
+    .box {
+        width: 100%;
+    }
+    .summary {
+        width: 100%;
+    }
+    .infoEng {
+        width: 100%;
+        margin-left: 0;
+    }
+    .infoAr {
+        width: 100%;
+        margin-right: 0;
+    }
+}

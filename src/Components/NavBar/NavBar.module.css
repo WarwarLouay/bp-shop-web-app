@@ -1,0 +1,82 @@
+.body {
+    width: 100vw;
+    height: 70px;
+    background-color: #4C53A5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo,
+.links {
+    color: whitesmoke;
+}
+
+.links {
+    width: 15%;
+}
+
+.links ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.links .ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.links ul li {
+    cursor: pointer;
+}
+
+.languages {
+    background-color: white;
+    color: #4C53A5;
+    font-weight: 500;
+    position: absolute;
+    padding: 0 4%;
+    top: 6%;
+    right: 10%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.69);
+    display: none;
+    opacity: 0;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.openLanguages {
+    background-color: white;
+    color: #4C53A5;
+    font-weight: 500;
+    position: absolute;
+    padding: 0 4%;
+    top: 6%;
+    right: 10%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px -1px rgba(0,0,0,0.69);
+    transition: all 1s ease;
+    display: block;
+    opacity: 1;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.NavFooter {
+    display: flex;
+    align-items: center;
+    background-color: whitesmoke !important;
+}
+
+.NavFooter .leftNavFooter {
+    align-items: center;
+    cursor: pointer;
+}
