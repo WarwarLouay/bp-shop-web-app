@@ -63,5 +63,13 @@
     "passwordMismatch": "كلمة المرور غير متطابقة",
     "fillAllInfo": "يرجى ملء جميع المعلومات",
     "selectLanguage": "اختار اللغة",
-    "total": "المجموع"
+    "total": "المجموع",
+    "delivered": "تم التوصيل",
+    "pending": "قيد الإنتظار",
+    "cancelled": "تم الرفض",
+    "size": "القياس:",
+    "quantity": "الكمية:",
+    "addToCart": "إضافة إلى السلة",
+    "orContinueWithGoogle": "أو أكمل عبر غوغل",
+    "login_with_google": "تسجيل الدخول عبر غوغل"
 }

@@ -189,7 +189,7 @@ const Cart = ({ getCartLength, isIn }) => {
               xs={2}
               sm={4}
               md={4}
-              key={cart._id}
+              key={product.productId._id}
               style={{ padding: "10px" }}
             >
               <Item
@@ -206,6 +206,7 @@ const Cart = ({ getCartLength, isIn }) => {
                     height: "100px",
                     borderRadius: "10px",
                   }}
+                  onClick={() => navigate(`/product/${product.productId._id}`)}
                   alt=""
                 />
                 <div>
@@ -254,7 +255,13 @@ const Cart = ({ getCartLength, isIn }) => {
         </Grid>
       </Box>
       <div className={classes.summary}>
-        <div className={classes.info}>
+        <div
+          className={classes.info}
+          style={{
+            marginLeft: i18n.language === "en" ? "30%" : "0",
+            marginRight: i18n.language === "ar" ? "30%" : "0",
+          }}
+        >
           <p>{t("free2Days")}</p>
           <hr />
           <div className={classes.orderSummary}>

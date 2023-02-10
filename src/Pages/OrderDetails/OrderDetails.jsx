@@ -39,7 +39,7 @@ const OrderDetails = () => {
       setOrderDetails(response.data);
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div>
@@ -110,11 +110,11 @@ const OrderDetails = () => {
             >
               <div>
                 {orderDetails.status === "1" ? (
-                  <Badge badgeContent={"Delivered"} color="primary"></Badge>
+                  <Badge badgeContent={t("delivered")} color="primary"></Badge>
                 ) : orderDetails.status === "0" ? (
-                  <Badge badgeContent={"Pending"} color="secondary"></Badge>
+                  <Badge badgeContent={t("pending")} color="secondary"></Badge>
                 ) : (
-                  <Badge badgeContent={"Cancelled"} color="danger"></Badge>
+                  <Badge badgeContent={t("cancelled")} color="danger"></Badge>
                 )}
               </div>
               <b>{t("shippingAddress")}</b>

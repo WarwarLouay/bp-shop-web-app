@@ -79,7 +79,7 @@
     }
     .fav {
         margin-top: 0;
-        height: auto;
+        min-height: auto;
     }
     .mt {
         margin-top: 0;

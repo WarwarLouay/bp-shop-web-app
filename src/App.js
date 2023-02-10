@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import Language from "./Pages/Language/Language";
 import Orders from "./Pages/Orders/Orders";
 import OrderDetails from "./Pages/OrderDetails/OrderDetails";
+import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 
 function App() {
   const { i18n } = useTranslation();
@@ -136,6 +137,7 @@ function App() {
         <Route path="/language" element={<Language />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/order/:id" element={<OrderDetails />} />
+        <Route path="/product/:id" element={<ProductDetails getCartLength={getCartLength} isIn={isIn} />} />
       </Routes>
       <div className="ftr">
         <Footer />

@@ -33,6 +33,7 @@ import TreeItem, { treeItemClasses } from "@mui/lab/TreeItem";
 import Label from "@mui/icons-material/Label";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useTranslation } from "react-i18next";
 
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
@@ -264,7 +265,11 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
               <React.Fragment>
                 <IconButton
                   aria-label="cart"
-                  style={{ marginRight: "20px", color: "white" }}
+                  style={{
+                    color: "white",
+                    marginRight: i18n.language === "en" ? "" : "20px",
+                    marginLeft: i18n.language === "ar" ? "20px" : "0",
+                  }}
                   onClick={() => navigate("/favorites")}
                 >
                   <StyledBadge
@@ -276,7 +281,11 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                 </IconButton>
                 <IconButton
                   aria-label="cart"
-                  style={{ marginRight: "20px", color: "white" }}
+                  style={{
+                    color: "white",
+                    marginRight: i18n.language === "en" ? "20px" : "0",
+                    marginLeft: i18n.language === "ar" ? "20px" : "0",
+                  }}
                   onClick={() => {
                     navigate("/cart");
                     handleCloseUserMenu();
@@ -292,10 +301,7 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="/static/images/avatar/2.jpg"
-                      />
+                      <MoreVertIcon style={{color: "white"}} />
                     </IconButton>
                   </Tooltip>
                   <Menu
@@ -317,7 +323,7 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                     <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">
                         <AccountCircleIcon />
-                        Profile
+                        {t("profile")}
                       </Typography>
                     </MenuItem>
 
@@ -329,21 +335,31 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                     >
                       <Typography textAlign="center">
                         <LocalShippingIcon />
-                        Shipping Address
+                        {t("shippingAddress")}
                       </Typography>
                     </MenuItem>
 
-                    <MenuItem onClick={() => {navigate('/orders'); handleCloseUserMenu()}}>
+                    <MenuItem
+                      onClick={() => {
+                        navigate("/orders");
+                        handleCloseUserMenu();
+                      }}
+                    >
                       <Typography textAlign="center">
                         <TocIcon />
-                        Orders
+                        {t("orders")}
                       </Typography>
                     </MenuItem>
 
-                    <MenuItem onClick={() => {navigate('/language'); handleCloseUserMenu()}}>
+                    <MenuItem
+                      onClick={() => {
+                        navigate("/language");
+                        handleCloseUserMenu();
+                      }}
+                    >
                       <Typography textAlign="center">
                         <MdLanguage size={20} />
-                        Language
+                        {t("language")}
                       </Typography>
                     </MenuItem>
 
@@ -355,7 +371,7 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                     >
                       <Typography textAlign="center">
                         <LockIcon />
-                        Logout
+                        {t("logout")}
                       </Typography>
                     </MenuItem>
                   </Menu>
@@ -391,7 +407,12 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                     open={Boolean(anchorElLanguage)}
                     onClose={handleCloseLanguageMenu}
                   >
-                    <MenuItem onClick={() => {i18n.changeLanguage("en"); handleCloseUserMenu()}}>
+                    <MenuItem
+                      onClick={() => {
+                        i18n.changeLanguage("en");
+                        handleCloseUserMenu();
+                      }}
+                    >
                       <Typography
                         textAlign="center"
                         style={{
@@ -410,7 +431,12 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                       </Typography>
                     </MenuItem>
 
-                    <MenuItem onClick={() => {i18n.changeLanguage("ar"); handleCloseUserMenu()}}>
+                    <MenuItem
+                      onClick={() => {
+                        i18n.changeLanguage("ar");
+                        handleCloseUserMenu();
+                      }}
+                    >
                       <Typography
                         textAlign="center"
                         style={{
@@ -446,12 +472,20 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
               overflowY: "auto",
             }}
           >
-            <StyledTreeItem nodeId="3" labelText={`${t('categories')}`} labelIcon={Label}>
+            <StyledTreeItem
+              nodeId="3"
+              labelText={`${t("categories")}`}
+              labelIcon={Label}
+            >
               {categories.map((category) => {
                 return (
                   <StyledTreeItem
                     nodeId={category._id}
-                    labelText={i18n.language === 'en' ? category.categoryEngName : category.categoryArName}
+                    labelText={
+                      i18n.language === "en"
+                        ? category.categoryEngName
+                        : category.categoryArName
+                    }
                     color="#4C53A5"
                     bgColor="#e8f0fe"
                   />
@@ -459,9 +493,7 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
               })}
             </StyledTreeItem>
           </TreeView>
-          <div style={{color: '#4C53A5'}}>
-            {t('justToLetYouKnow')}
-          </div>
+          <div style={{ color: "#4C53A5" }}>{t("justToLetYouKnow")}</div>
         </div>
       </AppBar>
 

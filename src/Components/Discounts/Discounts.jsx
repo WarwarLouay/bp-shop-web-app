@@ -62,7 +62,7 @@ const Discounts = ({ isIn, getCartLength, getFavorites }) => {
 
   return (
     <div className="container">
-      <h4 style={{ color: "#4C53A5" }}>{t('discouts')}</h4>
+      <h4 style={{ color: "#4C53A5" }}>{t("discouts")}</h4>
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={30}
@@ -82,11 +82,17 @@ const Discounts = ({ isIn, getCartLength, getFavorites }) => {
                   alt=""
                 />
                 <div className="title">
-                  <h6>{i18n.language === 'en' ? product.productEngName : product.productArName}</h6>
+                  <h6>
+                    {i18n.language === "en"
+                      ? product.productEngName
+                      : product.productArName}
+                  </h6>
                   <p>${product.productPrice}</p>
                 </div>
                 <div className="icons">
-                  <FaRegEye />
+                  <FaRegEye
+                    onClick={() => navigate(`/product/${product._id}`)}
+                  />
                   {product.usersFavorite.includes(user) ? (
                     <AiFillHeart onClick={() => toggleFavorite(product._id)} />
                   ) : (

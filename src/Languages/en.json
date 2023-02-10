@@ -63,5 +63,13 @@
     "passwordMismatch": "Password Mismatch",
     "fillAllInfo": "Please fill all information",
     "selectLanguage": "Select Language",
-    "total": "Total"
+    "total": "Total",
+    "delivered": "Delivered",
+    "pending": "Pending",
+    "cancelled": "Cancelled",
+    "size": "Size:",
+    "quantity": "Quantity:",
+    "addToCart": "ADD TO CART",
+    "orContinueWithGoogle": "Or continue with google",
+    "login_with_google": "Log in with Google"
 }

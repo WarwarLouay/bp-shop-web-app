@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
+import Request from "../../Config/Request";
 import { useNavigate } from "react-router-dom";
+import classes from "./Login.module.css";
 import {
   TextInput,
   PasswordInput,
@@ -9,6 +11,7 @@ import {
   Paper,
   Title,
   Text,
+  Divider,
   Container,
   Group,
   Button,
@@ -17,10 +20,13 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import { LoginSocialGoogle } from "reactjs-social-login";
+import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "react-i18next";
 
 const Login = ({ onLogin }) => {
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
+  const request = new Request();
   const navigate = useNavigate();
 
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -65,11 +71,10 @@ const Login = ({ onLogin }) => {
       }
       if (!data.user.message) {
         onLogin();
+        localStorage.setItem("uid", data.user._id);
+        localStorage.setItem("uEmail", data.user.email);
         navigate("/");
       }
-      console.log(data);
-      localStorage.setItem("uid", data.user._id);
-      localStorage.setItem("uEmail", data.user.email);
     } catch (err) {
       setMessage(`${t("something_wrong")}`);
       setOpen(true);
@@ -78,7 +83,7 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div style={{ marginTop: "150px", height: "calc(100vh - 250px)" }}>
+    <div className={classes.body}>
       <Container size={420} my={40}>
         <Title
           align="center"
@@ -143,6 +148,68 @@ const Login = ({ onLogin }) => {
           >
             {t("login")}
           </Button>
+          <Divider
+            label={t("orContinueWithGoogle")}
+            labelPosition="center"
+            my="lg"
+          />
+          <LoginSocialGoogle
+            client_id={
+              "730557315418-2rhd1fpjb2geqpq548mquuf03svta7i5.apps.googleusercontent.com"
+            }
+            scope="openid profile email"
+            discoveryDocs="claims_supported"
+            access_type="offline"
+            onResolve={async ({ provider, data }) => {
+              setIsLoading(true);
+              const email = data.email;
+              const fullName = data.name;
+              const password = data.name;
+              const d = { email, fullName };
+              const response = await request.loginWithGoogle(d);
+              if (
+                response.data.message === "created" ||
+                response.data.message === "loggedin"
+              ) {
+                const { data } = await axios.post(
+                  "http://localhost:4000/api/user/login",
+                  {
+                    email,
+                    password,
+                  },
+                  { withCredentials: true }
+                );
+                if (!data.user.message) {
+                  onLogin();
+                  localStorage.setItem("uid", data.user._id);
+                  localStorage.setItem("uEmail", data.user.email);
+                  navigate("/");
+                }
+                setIsLoading(false);
+              }
+
+              if (response.data.message === "Email already exist") {
+                setIsLoading(false);
+                setMessage(`${t("an_account_already_created")}`);
+                setOpen(true);
+              }
+            }}
+            onReject={(err) => {
+              console.log(err);
+            }}
+          >
+            <div className={classes.loginWithGoogle}>
+              <FcGoogle size={25} />
+              <div
+                style={{
+                  marginLeft: i18n.language === "en" ? "5%" : "0",
+                  marginRight: i18n.language === "ar" ? "5%" : "0",
+                }}
+              >
+                {t("login_with_google")}
+              </div>
+            </div>
+          </LoginSocialGoogle>
         </Paper>
       </Container>
 

@@ -93,6 +93,11 @@ class Request {
     const link = "/api/order/" + id;
     return await this.api.get(link, id);
   }
+
+  async getProductById(id) {
+    const link = "/api/product/" + id;
+    return await this.api.get(link, id);
+  }
 }
 
 export default Request;
