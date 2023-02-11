@@ -49,7 +49,7 @@ const ProductDetails = ({ getCartLength, isIn }) => {
   const addToCart = async (product) => {
     const productId = product._id;
     const qty = quantity;
-    const data = { user, productId, qty };
+    const data = { user, productId, qty, size };
     if (isIn) {
       try {
         await request.addToCart(data);

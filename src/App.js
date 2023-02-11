@@ -22,6 +22,7 @@ import Language from "./Pages/Language/Language";
 import Orders from "./Pages/Orders/Orders";
 import OrderDetails from "./Pages/OrderDetails/OrderDetails";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import Contact from "./Pages/Contact/Contact";
 
 function App() {
   const { i18n } = useTranslation();
@@ -138,6 +139,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/order/:id" element={<OrderDetails />} />
         <Route path="/product/:id" element={<ProductDetails getCartLength={getCartLength} isIn={isIn} />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <div className="ftr">
         <Footer />

@@ -144,6 +144,7 @@ const Cart = ({ getCartLength, isIn }) => {
       cartOrder.push({
         product: element.productId._id,
         qty: element.qty,
+        size: element.size,
       });
     });
     const product = cartOrder;
@@ -199,26 +200,36 @@ const Cart = ({ getCartLength, isIn }) => {
                   alignItems: "center",
                 }}
               >
-                <img
-                  src={`http://localhost:4000${product.productId.productImage}`}
-                  style={{
-                    width: "150px",
-                    height: "100px",
-                    borderRadius: "10px",
-                  }}
-                  onClick={() => navigate(`/product/${product.productId._id}`)}
-                  alt=""
-                />
                 <div>
-                  <b style={{ color: "#4C53A5", fontWeight: "900" }}>
-                    {i18n.language === "en"
-                      ? product.productId.productEngName
-                      : product.productId.productArName}
-                  </b>
-                  <p style={{ fontWeight: "900" }}>
-                    ${product.productId.productPrice}
-                  </p>
+                  <img
+                    src={`http://localhost:4000${product.productId.productImage}`}
+                    style={{
+                      width: "150px",
+                      height: "100px",
+                      borderRadius: "10px",
+                    }}
+                    onClick={() =>
+                      navigate(`/product/${product.productId._id}`)
+                    }
+                    alt=""
+                  />
+                  <div>
+                    <b style={{ color: "#4C53A5", fontWeight: "900" }}>
+                      {i18n.language === "en"
+                        ? product.productId.productEngName
+                        : product.productId.productArName}
+                    </b>
+                    <p style={{ fontWeight: "900" }}>
+                      ${product.productId.productPrice}
+                    </p>
+                  </div>
                 </div>
+                <select defaultValue={product.size}>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">Xl</option>
+                </select>
                 <div>
                   <DeleteSweepIcon
                     color="error"

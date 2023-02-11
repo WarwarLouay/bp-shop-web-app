@@ -50,7 +50,7 @@
     "welcome_back": "Welcome Back!",
     "doNotHaveAnAccountYet": "Do not have an account yet?",
     "createAccount": "Create account",
-    "email": "ُEmail",
+    "email": "Email",
     "password": "Password",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?",
@@ -71,5 +71,11 @@
     "quantity": "Quantity:",
     "addToCart": "ADD TO CART",
     "orContinueWithGoogle": "Or continue with google",
-    "login_with_google": "Log in with Google"
+    "login_with_google": "Log in with Google",
+    "workingHours": "Working hours",
+    "8To11": "8 a.m. – 8 p.m.",
+    "lebanonTripoli": "Lebanon - Tripoli",
+    "leaveYourEmail": "Leave your email and we will get back to you within 24 hours",
+    "yourMessage": "Your message",
+    "sendMessage": "Send message"
 }

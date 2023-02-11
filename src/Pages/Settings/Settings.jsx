@@ -12,6 +12,8 @@ import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import TocIcon from "@mui/icons-material/Toc";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import InfoIcon from "@mui/icons-material/Info";
 import { MdLanguage } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
@@ -36,7 +38,7 @@ const Settings = ({ isIn, onLogout }) => {
   };
 
   return (
-    <div style={{height: 'calc(100vh - 100px)'}}>
+    <div className="fav">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container columns={{ xs: 2, sm: 2, md: 2 }}>
           {isIn ? (
@@ -78,7 +80,14 @@ const Settings = ({ isIn, onLogout }) => {
                 </Item>
               </Grid>
 
-              <Grid onClick={() => navigate("/orders")} item xs={2} sm={4} md={4} style={{ padding: "10px" }}>
+              <Grid
+                onClick={() => navigate("/orders")}
+                item
+                xs={2}
+                sm={4}
+                md={4}
+                style={{ padding: "10px" }}
+              >
                 <Item
                   style={{
                     display: "flex",
@@ -111,6 +120,43 @@ const Settings = ({ isIn, onLogout }) => {
                   <Typography textAlign="center">
                     <MdLanguage size={20} />
                     {t("language")}
+                  </Typography>
+                </Item>
+              </Grid>
+
+              <Grid
+                onClick={() => navigate("/contact")}
+                item
+                xs={2}
+                sm={4}
+                md={4}
+                style={{ padding: "10px" }}
+              >
+                <Item
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <ContactMailIcon size={20} />
+                    {t("contactUs")}
+                  </Typography>
+                </Item>
+              </Grid>
+
+              <Grid item xs={2} sm={4} md={4} style={{ padding: "10px" }}>
+                <Item
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <InfoIcon size={20} />
+                    {t("aboutUs")}
                   </Typography>
                 </Item>
               </Grid>

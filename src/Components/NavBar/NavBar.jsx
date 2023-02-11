@@ -33,7 +33,7 @@ import TreeItem, { treeItemClasses } from "@mui/lab/TreeItem";
 import Label from "@mui/icons-material/Label";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useTranslation } from "react-i18next";
 
 const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
@@ -126,8 +126,6 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElLanguage, setAnchorElLanguage] = React.useState(null);
-
-  const pages = [`${t("aboutUs")}`, `${t("contactUs")}`];
 
   const [categories, setCategories] = React.useState([]);
 
@@ -224,11 +222,9 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem key="contact" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{t("contactUs")}</Typography>
+                </MenuItem>
               </Menu>
             </Box>
             <Typography
@@ -250,15 +246,23 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
               {t("bpShop")}
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
-              ))}
+              <Button
+                key="about"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {t("aboutUs")}
+              </Button>
+              <Button
+                key="contact"
+                onClick={() => {
+                  navigate("/contact");
+                  handleCloseNavMenu();
+                }}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {t("contactUs")}
+              </Button>
             </Box>
 
             {isIn ? (
@@ -301,7 +305,7 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <MoreVertIcon style={{color: "white"}} />
+                      <MoreVertIcon style={{ color: "white" }} />
                     </IconButton>
                   </Tooltip>
                   <Menu

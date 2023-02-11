@@ -71,5 +71,11 @@
     "quantity": "الكمية:",
     "addToCart": "إضافة إلى السلة",
     "orContinueWithGoogle": "أو أكمل عبر غوغل",
-    "login_with_google": "تسجيل الدخول عبر غوغل"
+    "login_with_google": "تسجيل الدخول عبر غوغل",
+    "workingHours": "ساعات العمل",
+    "8To11": "الثامنة صباحا - الثامنة ليلا",
+    "lebanonTripoli": "لبنان - طرابلس",
+    "leaveYourEmail": "اترك بريدك الإلكتروني وسنرد عليك في غضون 24 ساعة",
+    "yourMessage": "رسالتك",
+    "sendMessage": "إرسال"
 }

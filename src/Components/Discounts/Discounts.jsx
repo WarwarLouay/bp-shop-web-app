@@ -36,7 +36,8 @@ const Discounts = ({ isIn, getCartLength, getFavorites }) => {
   const addToCart = async (product) => {
     const productId = product._id;
     const qty = 1;
-    const data = { user, productId, qty };
+    const size = "M";
+    const data = { user, productId, qty, size };
     if (isIn) {
       try {
         await request.addToCart(data);

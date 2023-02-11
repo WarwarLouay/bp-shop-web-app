@@ -79,6 +79,7 @@ const OrderDetails = () => {
                             ? order.product.productEngName
                             : order.product.productArName}
                         </b>
+                        ({order.size})
                         <p style={{ fontWeight: "900" }}>
                           ${order.product.productPrice}
                         </p>
