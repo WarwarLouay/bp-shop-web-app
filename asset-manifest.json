@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/bp-shop-web-app/static/css/main.2e001e9b.css",
-    "main.js": "/bp-shop-web-app/static/js/main.47160155.js",
+    "main.js": "/bp-shop-web-app/static/js/main.4bdd2859.js",
     "static/media/1.png": "/bp-shop-web-app/static/media/1.a28e134e49c79fb65d42.png",
     "static/media/2.png": "/bp-shop-web-app/static/media/2.d7d6c113b31769022a01.png",
     "static/media/3.png": "/bp-shop-web-app/static/media/3.e54dd3335f3b64868bca.png",
     "static/media/subscribe.png": "/bp-shop-web-app/static/media/subscribe.7c1ad1547f5a7d4800b2.png",
     "index.html": "/bp-shop-web-app/index.html",
     "main.2e001e9b.css.map": "/bp-shop-web-app/static/css/main.2e001e9b.css.map",
-    "main.47160155.js.map": "/bp-shop-web-app/static/js/main.47160155.js.map"
+    "main.4bdd2859.js.map": "/bp-shop-web-app/static/js/main.4bdd2859.js.map"
   },
   "entrypoints": [
     "static/css/main.2e001e9b.css",
-    "static/js/main.47160155.js"
+    "static/js/main.4bdd2859.js"
   ]
 }
