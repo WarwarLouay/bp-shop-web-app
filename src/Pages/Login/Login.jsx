@@ -55,7 +55,7 @@ const Login = ({ onLogin }) => {
     setIsLoading(true);
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/user/login",
+        "https://smiling-coveralls-crow.cyclic.app/api/user/login",
         {
           ...values,
         },
@@ -172,7 +172,7 @@ const Login = ({ onLogin }) => {
                 response.data.message === "loggedin"
               ) {
                 const { data } = await axios.post(
-                  "http://localhost:4000/api/user/login",
+                  "https://smiling-coveralls-crow.cyclic.app/api/user/login",
                   {
                     email,
                     password,

@@ -43,7 +43,7 @@ const Register = () => {
     } else {
       try {
         const { data } = await axios.post(
-          "http://localhost:4000/api/user",
+          "https://smiling-coveralls-crow.cyclic.app/api/user",
           {
             fullName,
             email,

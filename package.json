@@ -1,4 +1,5 @@
 {
+  "homepage": "https://warwarlouay.github.io/bp-shop-web-app",
   "name": "bp-shop-web-app",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.2",
     "bootstrap": "^5.2.3",
+    "gh-pages": "^5.0.0",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
     "moment": "^2.29.4",
@@ -33,6 +35,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
