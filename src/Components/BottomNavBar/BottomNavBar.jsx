@@ -32,7 +32,7 @@ const BottomNavBar = () => {
         onChange={(e, newValue) => setValue(newValue)}
       >
         <BottomNavigationAction
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/bp-shop-web-app")}
           label={`${t('home')}`}
           icon={<HomeIcon style={{ color: value === 0 ? "white" : "" }} />}
         />

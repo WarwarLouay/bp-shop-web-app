@@ -158,7 +158,7 @@ const Cart = ({ getCartLength, isIn }) => {
       setOpen(true);
       getCartLength();
       setTimeout(() => {
-        navigate("/");
+        navigate("/bp-shop-web-app");
       }, 2000);
     }
     setIsLoading(false);
@@ -215,9 +215,9 @@ const Cart = ({ getCartLength, isIn }) => {
                   />
                   <div>
                     <b style={{ color: "#4C53A5", fontWeight: "900" }}>
-                      {i18n.language === "en"
-                        ? product.productId.productEngName
-                        : product.productId.productArName}
+                      {i18n.language === "ar"
+                        ? product.productId.productArName
+                        : product.productId.productEngName}
                     </b>
                     <p style={{ fontWeight: "900" }}>
                       ${product.productId.productPrice}

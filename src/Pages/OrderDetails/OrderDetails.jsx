@@ -75,9 +75,9 @@ const OrderDetails = () => {
                       />
                       <div>
                         <b style={{ color: "#4C53A5", fontWeight: "900" }}>
-                          {i18n.language === "en"
-                            ? order.product.productEngName
-                            : order.product.productArName}
+                          {i18n.language === "ar"
+                            ? order.product.productArName
+                            : order.product.productEngName}
                         </b>
                         ({order.size})
                         <p style={{ fontWeight: "900" }}>

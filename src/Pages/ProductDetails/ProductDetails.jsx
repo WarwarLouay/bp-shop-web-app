@@ -75,9 +75,9 @@ const ProductDetails = ({ getCartLength, isIn }) => {
           <div className={classes.right}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4 style={{ color: "#4C53A5" }}>
-                {i18n.language === "en"
-                  ? productDetails.productEngName
-                  : productDetails.productArName}
+                {i18n.language === "ar"
+                  ? productDetails.productArName
+                  : productDetails.productEngName}
               </h4>
               <h4 style={{ color: "#4C53A5" }}>
                 ${productDetails.productPrice}
@@ -85,9 +85,9 @@ const ProductDetails = ({ getCartLength, isIn }) => {
             </div>
             <hr />
             <p style={{ color: "gray" }}>
-              {i18n.language === "en"
-                ? productDetails.productEngDescription
-                : productDetails.productArDescription}
+              {i18n.language === "ar"
+                ? productDetails.productArDescription
+                : productDetails.productEngDescription}
             </p>
             <hr />
             <h4 style={{ color: "#4C53A5" }}>{t("size")}</h4>

@@ -41,19 +41,25 @@ const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
 
   return (
     <div className="container fav">
-      <h4 style={{ color: "#4C53A5" }}>{t('favoriteProducts')}</h4>
+      <h4 style={{ color: "#4C53A5" }}>{t("favoriteProducts")}</h4>
       <Row className="col-12">
         {favorites.map((product) => {
           return (
             <Col key={product._id} className="productSwiper col-3">
               <div className="card">
-                {product.product.discount && <div className="discount">{product.product.discount}%</div>}
+                {product.product.discount && (
+                  <div className="discount">{product.product.discount}%</div>
+                )}
                 <img
                   src={`http://localhost:4000${product.product.productImage}`}
                   alt=""
                 />
                 <div className="title">
-                  <h6>{i18n.language === 'en' ? product.product.productEngName : product.product.productArName}</h6>
+                  <h6>
+                    {i18n.language === "ar"
+                      ? product.product.productArName
+                      : product.product.productEngName}
+                  </h6>
                   <p>${product.product.productPrice}</p>
                 </div>
                 <div className="icons">
