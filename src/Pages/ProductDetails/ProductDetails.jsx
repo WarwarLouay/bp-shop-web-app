@@ -9,6 +9,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tada from 'react-reveal/Tada';
 import { useTranslation } from "react-i18next";
 
 const ProductDetails = ({ getCartLength, isIn }) => {
@@ -160,13 +161,15 @@ const ProductDetails = ({ getCartLength, isIn }) => {
               <button onClick={increaseQty}>+</button>
             </div>
             <hr />
-            <Button
-              style={{ backgroundColor: "#4C53A5", width: "100%" }}
-              variant="contained"
-              onClick={() => addToCart(productDetails)}
-            >
-              {t("addToCart")}
-            </Button>
+            <Tada spy={addToCart}>
+              <Button
+                style={{ backgroundColor: "#4C53A5", width: "100%" }}
+                variant="contained"
+                onClick={() => addToCart(productDetails)}
+              >
+                {t("addToCart")}
+              </Button>
+            </Tada>
           </div>
           <Backdrop
             sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

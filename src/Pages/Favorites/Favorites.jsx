@@ -6,6 +6,7 @@ import { FaRegEye } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { Row, Col } from "react-bootstrap";
+import RubberBand from "react-reveal/RubberBand";
 import { useTranslation } from "react-i18next";
 
 const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
@@ -14,8 +15,12 @@ const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
   const user = localStorage.getItem("uid");
   const navigate = useNavigate();
 
+  const [cartActionProduct, setCartActionProduct] = React.useState("");
+  const [favoriteActionProduct, setFavoriteActionProduct] = React.useState("");
+
   const addToCart = async (product) => {
     const productId = product.product._id;
+    setCartActionProduct(productId);
     const qty = 1;
     const data = { user, productId, qty };
     if (isIn) {
@@ -28,9 +33,11 @@ const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
     } else {
       navigate("authentication/login");
     }
+    setCartActionProduct("");
   };
 
   const toggleFavorite = async (product) => {
+    setFavoriteActionProduct(product);
     const data = { user, product };
     if (isIn === true) {
       await request.toggleFavorites(data);
@@ -38,6 +45,7 @@ const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
     } else {
       navigate("/authentication/login");
     }
+    setFavoriteActionProduct("");
   };
 
   return (
@@ -64,14 +72,22 @@ const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
                   <p>${product.product.productPrice}</p>
                 </div>
                 <div className="icons">
-                  <FaRegEye />
-                  <AiFillHeart
-                    onClick={() => toggleFavorite(product.product._id)}
-                  />
-                  <MdOutlineAddShoppingCart
-                    onClick={() => addToCart(product)}
-                  />
-                </div>
+                    <RubberBand spy="">
+                      <FaRegEye
+                        onClick={() => navigate(`/product/${product.product._id}`)}
+                      />
+                    </RubberBand>
+                      <RubberBand spy={favoriteActionProduct === product.product._id}>
+                        <AiFillHeart
+                          onClick={() => toggleFavorite(product.product._id)}
+                        />
+                      </RubberBand>
+                    <RubberBand spy={cartActionProduct === product.product._id}>
+                      <MdOutlineAddShoppingCart
+                        onClick={() => addToCart(product)}
+                      />
+                    </RubberBand>
+                  </div>
               </div>
             </Col>
           );

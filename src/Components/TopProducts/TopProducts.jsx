@@ -10,6 +10,8 @@ import { FaRegEye } from "react-icons/fa";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import Skeleton from "@mui/material/Skeleton";
+import RubberBand from "react-reveal/RubberBand";
+import Fade from "react-reveal/Fade";
 import { useTranslation } from "react-i18next";
 
 const TopProducts = ({ isIn, getCartLength, getFavorites }) => {
@@ -20,6 +22,9 @@ const TopProducts = ({ isIn, getCartLength, getFavorites }) => {
 
   const [isLoading, setIsLoading] = React.useState(true);
   const [products, setProducts] = React.useState([]);
+
+  const [cartActionProduct, setCartActionProduct] = React.useState("");
+  const [favoriteActionProduct, setFavoriteActionProduct] = React.useState("");
 
   const callPage = async () => {
     const topProduct = await request.get("product");
@@ -39,6 +44,7 @@ const TopProducts = ({ isIn, getCartLength, getFavorites }) => {
 
   const addToCart = async (product) => {
     const productId = product._id;
+    setCartActionProduct(productId);
     const qty = 1;
     const size = "M";
     const data = { user, productId, qty, size };
@@ -52,9 +58,11 @@ const TopProducts = ({ isIn, getCartLength, getFavorites }) => {
     } else {
       navigate("/authentication/login");
     }
+    setCartActionProduct("");
   };
 
   const toggleFavorite = async (product) => {
+    setFavoriteActionProduct(product);
     const data = { user, product };
     if (isIn === true) {
       await request.toggleFavorites(data);
@@ -63,105 +71,118 @@ const TopProducts = ({ isIn, getCartLength, getFavorites }) => {
     } else {
       navigate("/authentication/login");
     }
+    setFavoriteActionProduct("");
   };
 
   return (
     <div className="container">
       <h4 style={{ color: "#4C53A5" }}>{t("topProducts")}</h4>
       {!isLoading ? (
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          className="mySwiper"
-          style={{ zIndex: "0" }}
-        >
-          {products.map((product) => {
-            return (
-              <SwiperSlide key={product._id} className="productSwiper">
-                <div className="card">
-                  <img
-                    src={`${Constant.serverlink}${product.productImage}`}
-                    alt=""
-                  />
-                  <div className="title">
-                    <h6>
-                      {i18n.language === "en"
-                        ? product.productEngName
-                        : product.productArName}
-                    </h6>
-                    <p>${product.productPrice}</p>
-                  </div>
-                  <div className="icons">
-                    <FaRegEye
-                      onClick={() => navigate(`/product/${product._id}`)}
+        <Fade bottom>
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            className="mySwiper"
+            style={{ zIndex: "0" }}
+          >
+            {products.map((product) => {
+              return (
+                <SwiperSlide key={product._id} className="productSwiper">
+                  <div className="card">
+                    <img
+                      src={`${Constant.serverlink}${product.productImage}`}
+                      alt=""
                     />
-                    {product.usersFavorite.includes(user) ? (
-                      <AiFillHeart
-                        onClick={() => toggleFavorite(product._id)}
-                      />
-                    ) : (
-                      <AiOutlineHeart
-                        onClick={() => toggleFavorite(product._id)}
-                      />
-                    )}
-                    <MdOutlineAddShoppingCart
-                      onClick={() => addToCart(product)}
-                    />
+                    <div className="title">
+                      <h6>
+                        {i18n.language === "en"
+                          ? product.productEngName
+                          : product.productArName}
+                      </h6>
+                      <p>${product.productPrice}</p>
+                    </div>
+                    <div className="icons">
+                      <RubberBand spy="">
+                        <FaRegEye
+                          onClick={() => navigate(`/product/${product._id}`)}
+                        />
+                      </RubberBand>
+                      {product.usersFavorite.includes(user) ? (
+                        <RubberBand spy={favoriteActionProduct === product._id}>
+                          <AiFillHeart
+                            onClick={() => toggleFavorite(product._id)}
+                          />
+                        </RubberBand>
+                      ) : (
+                        <RubberBand spy={favoriteActionProduct === product._id}>
+                          <AiOutlineHeart
+                            onClick={() => toggleFavorite(product._id)}
+                          />
+                        </RubberBand>
+                      )}
+                      <RubberBand spy={cartActionProduct === product._id}>
+                        <MdOutlineAddShoppingCart
+                          onClick={() => addToCart(product)}
+                        />
+                      </RubberBand>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </Fade>
       ) : (
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          className="mySwiper"
-          style={{ zIndex: "0" }}
-        >
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="productSwiper">
-            <div className="card">
-              <Skeleton variant="rectangular" width={210} height={250} />
-            </div>
-          </SwiperSlide>
-        </Swiper>
+        <Fade bottom>
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            className="mySwiper"
+            style={{ zIndex: "0" }}
+          >
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="productSwiper">
+              <div className="card">
+                <Skeleton variant="rectangular" width={210} height={250} />
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </Fade>
       )}
     </div>
   );

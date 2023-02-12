@@ -8,6 +8,7 @@ import {
   Button,
   Image,
 } from "@mantine/core";
+import Fade from "react-reveal/Fade";
 import { useTranslation } from "react-i18next";
 
 const useStyles = createStyles((theme) => ({
@@ -79,26 +80,33 @@ const Subscribe = () => {
   const { classes } = useStyles();
 
   return (
-    <div className={`container sub ${classes.wrapper}`}>
-      <div className={classes.body}>
-        <Title className={classes.title}>{t('waitAminute')}</Title>
-        <Text weight={500} size="lg" mb={5}>
-          {t('subscribeToOurNewsletter')}
-        </Text>
-        <Text size="sm" color="dimmed">
-          {t('youWillNeverMiss')}
-        </Text>
+    <Fade bottom cascade>
+      <div className={`container sub ${classes.wrapper}`}>
+        <div className={classes.body}>
+          <Title className={classes.title}>{t("waitAminute")}</Title>
+          <Text weight={500} size="lg" mb={5}>
+            {t("subscribeToOurNewsletter")}
+          </Text>
+          <Text size="sm" color="dimmed">
+            {t("youWillNeverMiss")}
+          </Text>
 
-        <div className={classes.controls}>
-          <TextInput
-            placeholder={`${t('yourEmail')}`}
-            classNames={{ input: classes.input, root: classes.inputWrapper }}
-          />
-          <Button style={{backgroundColor: '#4C53A5'}} className={classes.control}>{t('subscribe')}</Button>
+          <div className={classes.controls}>
+            <TextInput
+              placeholder={`${t("yourEmail")}`}
+              classNames={{ input: classes.input, root: classes.inputWrapper }}
+            />
+            <Button
+              style={{ backgroundColor: "#4C53A5" }}
+              className={classes.control}
+            >
+              {t("subscribe")}
+            </Button>
+          </div>
         </div>
+        <Image src={image} className={classes.image} />
       </div>
-      <Image src={image} className={classes.image} />
-    </div>
+    </Fade>
   );
 };
 
