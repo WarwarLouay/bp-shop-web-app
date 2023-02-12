@@ -179,7 +179,8 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
               variant="h6"
               noWrap
               component="a"
-              href="/bp-shop-web-app"
+              href="#"
+              onClick={() => navigate("/bp-shop-web-app")}
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
