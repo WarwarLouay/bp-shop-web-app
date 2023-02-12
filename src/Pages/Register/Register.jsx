@@ -81,7 +81,7 @@ const Register = () => {
   };
 
   return (
-    <div style={{ marginTop: "150px", height: "calc(100vh - 250px)" }}>
+    <div className="fav">
       <Container size={420} my={40}>
         <Title
           align="center"
