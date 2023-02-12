@@ -1,4 +1,5 @@
 import React from "react";
+import Constant from "../../Config/Constant";
 import { useNavigate } from "react-router-dom";
 import Request from "../../Config/Request";
 import { FaRegEye } from "react-icons/fa";
@@ -51,7 +52,7 @@ const Favorites = ({ isIn, getCartLength, getFavorites, favorites }) => {
                   <div className="discount">{product.product.discount}%</div>
                 )}
                 <img
-                  src={`http://localhost:4000${product.product.productImage}`}
+                  src={`${Constant.serverlink}${product.product.productImage}`}
                   alt=""
                 />
                 <div className="title">

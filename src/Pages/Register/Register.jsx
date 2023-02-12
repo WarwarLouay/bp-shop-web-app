@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Constant from "../../Config/Constant";
 import { useNavigate } from "react-router-dom";
 import {
   TextInput,
@@ -43,7 +44,7 @@ const Register = () => {
     } else {
       try {
         const { data } = await axios.post(
-          "https://smiling-coveralls-crow.cyclic.app/api/user",
+          Constant.serverlink + "/api/user",
           {
             fullName,
             email,

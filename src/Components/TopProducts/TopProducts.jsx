@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
+import Constant from "../../Config/Constant";
 import { useNavigate } from "react-router-dom";
 import Request from "../../Config/Request";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -78,7 +79,7 @@ const TopProducts = ({ isIn, getCartLength, getFavorites }) => {
             <SwiperSlide key={product._id} className="productSwiper">
               <div className="card">
                 <img
-                  src={`http://localhost:4000${product.productImage}`}
+                  src={`${Constant.serverlink}${product.productImage}`}
                   alt=""
                 />
                 <div className="title">

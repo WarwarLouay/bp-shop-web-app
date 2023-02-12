@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Constant from "../../Config/Constant";
 import Request from "../../Config/Request";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
@@ -55,7 +56,7 @@ const Login = ({ onLogin }) => {
     setIsLoading(true);
     try {
       const { data } = await axios.post(
-        "https://smiling-coveralls-crow.cyclic.app/api/user/login",
+        Constant.serverlink + "/api/user/login",
         {
           ...values,
         },
@@ -172,7 +173,7 @@ const Login = ({ onLogin }) => {
                 response.data.message === "loggedin"
               ) {
                 const { data } = await axios.post(
-                  "https://smiling-coveralls-crow.cyclic.app/api/user/login",
+                  Constant.serverlink + "/api/user/login",
                   {
                     email,
                     password,

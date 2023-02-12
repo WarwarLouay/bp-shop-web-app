@@ -166,7 +166,7 @@ const NavBar = ({ cartLength, favorites, onLogout, isIn }) => {
     removeCookie("jwt");
     localStorage.removeItem("uid");
     localStorage.removeItem("uEmail");
-    navigate("/");
+    navigate("/bp-shop-web-app");
     onLogout();
   };
 

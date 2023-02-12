@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
+import Constant from "../../Config/Constant";
 import { useParams, useNavigate } from "react-router-dom";
 import classes from "./ProductDetails.module.css";
 import Request from "../../Config/Request";
@@ -68,7 +69,7 @@ const ProductDetails = ({ getCartLength, isIn }) => {
         <div className={`container ${classes.body}`}>
           <div className={classes.left}>
             <img
-              src={`http://localhost:4000${productDetails.productImage}`}
+              src={`${Constant.serverlink}${productDetails.productImage}`}
               alt=""
             />
           </div>

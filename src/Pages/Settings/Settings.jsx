@@ -34,6 +34,7 @@ const Settings = ({ isIn, onLogout }) => {
     removeCookie("jwt");
     localStorage.removeItem("uid");
     localStorage.removeItem("uEmail");
+    navigate("/bp-shop-web-app");
     onLogout();
   };
 

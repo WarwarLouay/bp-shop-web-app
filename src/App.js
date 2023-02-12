@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import axios from "axios";
+import Constant from "./Config/Constant";
 import "./i18n";
 import "./App.css";
 import { useCookies } from "react-cookie";
@@ -66,7 +67,7 @@ function App() {
       if (!cookie.jwt) {
       } else {
         const { data } = await axios.post(
-          "https://smiling-coveralls-crow.cyclic.app/api/user/auth",
+          Constant.serverlink + "/api/user/auth",
           {},
           { withCredentials: true }
         );

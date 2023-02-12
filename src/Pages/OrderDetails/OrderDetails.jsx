@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
+import Constant from "../../Config/Constant";
 import { useParams } from "react-router-dom";
 import classes from "./OrderDetails.module.css";
 import Request from "../../Config/Request";
@@ -65,7 +66,7 @@ const OrderDetails = () => {
                       }}
                     >
                       <img
-                        src={`http://localhost:4000${order.product.productImage}`}
+                        src={`${Constant.serverlink}${order.product.productImage}`}
                         style={{
                           width: "150px",
                           height: "100px",
