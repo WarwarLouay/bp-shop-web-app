@@ -73,7 +73,7 @@ const Login = ({ onLogin }) => {
         onLogin();
         localStorage.setItem("uid", data.user._id);
         localStorage.setItem("uEmail", data.user.email);
-        navigate("/");
+        navigate("/bp-shop-web-app");
       }
     } catch (err) {
       setMessage(`${t("something_wrong")}`);

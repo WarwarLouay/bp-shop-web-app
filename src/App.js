@@ -66,7 +66,7 @@ function App() {
       if (!cookie.jwt) {
       } else {
         const { data } = await axios.post(
-          "http://localhost:4000/api/user/auth",
+          "https://smiling-coveralls-crow.cyclic.app/api/user/auth",
           {},
           { withCredentials: true }
         );
