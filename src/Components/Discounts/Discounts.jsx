@@ -46,7 +46,7 @@ const Discounts = ({ isIn, getCartLength, getFavorites }) => {
         console.log(error);
       }
     } else {
-      navigate("authentication/login");
+      navigate("/authentication/login");
     }
   };
 

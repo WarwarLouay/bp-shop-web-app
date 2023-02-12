@@ -99,7 +99,7 @@ function App() {
 
       <Routes>
         <Route
-          path="/"
+          path="/bp-shop-web-app"
           element={
             <Home
               cartLength={cartLength}
