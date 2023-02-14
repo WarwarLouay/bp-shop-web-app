@@ -102,6 +102,14 @@ const Cart = ({ getCartLength, isIn }) => {
     });
   };
 
+  const changeSize = (e, id) => {
+    cart.forEach((element) => {
+      if (element._id === id) {
+        element.size = e.target.value;
+      }
+    });
+  };
+
   const deleteProduct = async (productCart) => {
     const id = productCart._id;
     const data = { id, user };
@@ -154,7 +162,7 @@ const Cart = ({ getCartLength, isIn }) => {
     const response = await request.checkout(data);
     if (response.data.shipping) {
       setVisible(false);
-      setMessage("Thank you");
+      setMessage(`${t("thankYou")}`);
       setSeverity("success");
       setOpen(true);
       getCartLength();
@@ -225,7 +233,10 @@ const Cart = ({ getCartLength, isIn }) => {
                     </p>
                   </div>
                 </div>
-                <select defaultValue={product.size}>
+                <select
+                  onChange={(e) => changeSize(e, product._id)}
+                  defaultValue={product.size}
+                >
                   <option value="S">S</option>
                   <option value="M">M</option>
                   <option value="L">L</option>
@@ -311,20 +322,19 @@ const Cart = ({ getCartLength, isIn }) => {
         <Fade in={visible}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Notice
+              {t("notice")}
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Make sure that you put the correct shipping address in your
-              profile.
+              {t("makeSure")}
             </Typography>
             <Button style={{ color: "#4C53A5" }} onClick={editAddressHandler}>
-              Edit
+              {t("edit")}
             </Button>
             <Button
               style={{ backgroundColor: "#4C53A5", color: "white" }}
               onClick={submitCheckoutHandler}
             >
-              Continue
+              {t("continue")}
             </Button>
           </Box>
         </Fade>

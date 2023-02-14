@@ -9,7 +9,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-import Tada from 'react-reveal/Tada';
+import Tada from "react-reveal/Tada";
 import { useTranslation } from "react-i18next";
 
 const ProductDetails = ({ getCartLength, isIn }) => {
@@ -23,6 +23,7 @@ const ProductDetails = ({ getCartLength, isIn }) => {
   const [productDetails, setProductDetails] = React.useState([]);
   const [size, setSize] = React.useState("M");
   const [quantity, setQuantity] = React.useState(1);
+  const [cartActionProduct, setCartActionProduct] = React.useState("");
 
   React.useEffect(() => {
     callPage();
@@ -50,6 +51,7 @@ const ProductDetails = ({ getCartLength, isIn }) => {
 
   const addToCart = async (product) => {
     const productId = product._id;
+    setCartActionProduct(productId);
     const qty = quantity;
     const data = { user, productId, qty, size };
     if (isIn) {
@@ -60,8 +62,9 @@ const ProductDetails = ({ getCartLength, isIn }) => {
         console.log(error);
       }
     } else {
-      navigate("authentication/login");
+      navigate("/authentication/login");
     }
+    setCartActionProduct("");
   };
 
   return (
@@ -161,7 +164,7 @@ const ProductDetails = ({ getCartLength, isIn }) => {
               <button onClick={increaseQty}>+</button>
             </div>
             <hr />
-            <Tada spy={addToCart}>
+            <Tada spy={cartActionProduct === productDetails._id}>
               <Button
                 style={{ backgroundColor: "#4C53A5", width: "100%" }}
                 variant="contained"

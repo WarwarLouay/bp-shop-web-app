@@ -77,5 +77,10 @@
     "lebanonTripoli": "Lebanon - Tripoli",
     "leaveYourEmail": "Leave your email and we will get back to you within 24 hours",
     "yourMessage": "Your message",
-    "sendMessage": "Send message"
+    "sendMessage": "Send message",
+    "makeSure" : "Make sure that you put the correct shipping address in your profile.",
+    "continue": "Continue",
+    "edit": "Edit",
+    "notice": "Notice",
+    "thankYou": "Thank you"
 }

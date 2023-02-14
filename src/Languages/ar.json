@@ -77,5 +77,10 @@
     "lebanonTripoli": "لبنان - طرابلس",
     "leaveYourEmail": "اترك بريدك الإلكتروني وسنرد عليك في غضون 24 ساعة",
     "yourMessage": "رسالتك",
-    "sendMessage": "إرسال"
+    "sendMessage": "إرسال",
+    "makeSure" : "تأكد من إدخال عنوان الشحن الصحيح في ملف التعريف الخاص بك.",
+    "continue": "متابعة",
+    "edit": "تعديل",
+    "notice": "ملاحظة",
+    "thankYou": "شكرا لك"
 }
