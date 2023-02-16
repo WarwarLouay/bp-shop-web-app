@@ -20,6 +20,8 @@ import Fade from "react-reveal/Fade";
 import OTPInput from "otp-input-react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
 
 const useStyles = createStyles((theme) => ({
@@ -67,6 +69,7 @@ const ForgotPassword = () => {
   const [severity, setSeverity] = React.useState("");
 
   const [activeCard, setActiveCard] = React.useState("emailCard");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const [email, setEmail] = React.useState("");
   const [code, setCode] = React.useState("");
@@ -95,6 +98,7 @@ const ForgotPassword = () => {
   }, [seconds, activeCard, minutes]);
 
   const forgotPassword = async () => {
+    setIsLoading(true);
     const data = { email };
     const response = await request.forgotPassword(data);
     console.log(response);
@@ -105,6 +109,7 @@ const ForgotPassword = () => {
       setSeverity("error");
       setOpen(true);
     }
+    setIsLoading(false);
   };
 
   const verifyCode = async () => {
@@ -126,6 +131,7 @@ const ForgotPassword = () => {
       setSeverity("error");
       setOpen(true);
     } else {
+      setIsLoading(true);
       const data = { email, password };
       const response = await request.changePassword(data);
       if (response.data.message === "updated") {
@@ -140,6 +146,7 @@ const ForgotPassword = () => {
         setSeverity("error");
         setOpen(true);
       }
+      setIsLoading(false);
     }
   };
 
@@ -298,6 +305,15 @@ const ForgotPassword = () => {
           </Container>
         </Fade>
       </div>
+
+      {isLoading && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isLoading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
 
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
