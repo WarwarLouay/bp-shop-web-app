@@ -90,6 +90,7 @@ const ForgotPassword = () => {
   const verifyCode = async () => {
     const data = { code };
     const response = await request.verifyCode(data);
+    console.log(response);
     if (response.data.message === "true") {
       setActiveCard("changePasswordCard");
     } else {
@@ -124,7 +125,8 @@ const ForgotPassword = () => {
 
   const resendCode = async () => {
     const data = { email };
-    await request.resendCode(data);
+    const response = await request.resendCode(data);
+    console.log(response);
   };
 
   return (
