@@ -74,6 +74,26 @@ const ForgotPassword = () => {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
 
+  const [minutes, setMinutes] = React.useState(1);
+  const [seconds, setSeconds] = React.useState(30);
+
+  React.useEffect(() => {
+    if(activeCard === 'otpCard') {
+        if (seconds > 0) {
+            setTimeout(() => {
+              setSeconds(seconds - 1);
+            }, 1000);
+          }
+          if (minutes > 0 && seconds === 0) {
+            setSeconds(59);
+            setMinutes(0);
+            setTimeout(() => {
+              setSeconds(seconds - 1);
+            }, 1000);
+          }
+    }
+  }, [seconds, activeCard, minutes]);
+
   const forgotPassword = async () => {
     const data = { email };
     const response = await request.forgotPassword(data);
@@ -124,6 +144,8 @@ const ForgotPassword = () => {
   };
 
   const resendCode = async () => {
+    setMinutes(1);
+    setSeconds(30);
     const data = { email };
     const response = await request.resendCode(data);
     console.log(response);
@@ -208,15 +230,20 @@ const ForgotPassword = () => {
               <Group position="apart" mt="lg">
                 <Text color="dimmed" size="sm" align="center" mt={5}>
                   Didn't get a verification code?
-                  <Anchor
-                    href="#"
-                    style={{ color: "#4C53A5" }}
-                    size="sm"
-                    onClick={resendCode}
-                  >
-                    Resend code
-                  </Anchor>
                 </Text>
+                {minutes > 0 || seconds > 0 ? (
+                    <Text color="dimmed" size="sm" align="center" mt={5}>
+                      0{minutes}:{seconds > 9 ? seconds : "0" + seconds}
+                    </Text>
+                  ) : (
+                    <Text
+                      style={{ color: "#4C53A5" }}
+                      size="sm"
+                      onClick={resendCode}
+                    >
+                      Resend
+                    </Text>
+                  )}
               </Group>
               <Button
                 style={{ backgroundColor: "#4C53A5" }}
