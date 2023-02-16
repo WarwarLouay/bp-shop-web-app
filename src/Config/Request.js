@@ -98,6 +98,21 @@ class Request {
     const link = "/api/product/" + id;
     return await this.api.get(link, id);
   }
+
+  async forgotPassword(data) {
+    const link = "/api/user/forgotpassword";
+    return await this.api.post(link, data);
+  }
+
+  async verifyCode(data) {
+    const link = "/api/user/verifycode";
+    return await this.api.post(link, data);
+  }
+
+  async changePassword(data) {
+    const link = "/api/user/changepassword";
+    return await this.api.post(link, data);
+  }
 }
 
 export default Request;

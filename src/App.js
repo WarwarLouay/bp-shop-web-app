@@ -24,6 +24,7 @@ import Orders from "./Pages/Orders/Orders";
 import OrderDetails from "./Pages/OrderDetails/OrderDetails";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import Contact from "./Pages/Contact/Contact";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 
 function App() {
   const { i18n } = useTranslation();
@@ -141,6 +142,7 @@ function App() {
         <Route path="/order/:id" element={<OrderDetails />} />
         <Route path="/product/:id" element={<ProductDetails getCartLength={getCartLength} isIn={isIn} />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
       <div className="ftr">
         <Footer />

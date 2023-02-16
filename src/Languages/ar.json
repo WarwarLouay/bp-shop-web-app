@@ -82,5 +82,14 @@
     "continue": "متابعة",
     "edit": "تعديل",
     "notice": "ملاحظة",
-    "thankYou": "شكرا لك"
+    "thankYou": "شكرا لك",
+    "yourPasswordChanged": "تم تغيير كلمة السر الخاصة بك",
+    "verificationCodeIsIncorrect": "رمز التحقق غير صحيح",
+    "forgotYourPassword": "نسيت كلمة السر؟",
+    "enterYourEmailToGetAVerificationCode": "أدخل بريدك الإلكتروني للحصول على رمز التحقق",
+    "backToLogin": "العودة إلى صفحة تسجيل الدخول",
+    "verificationCode": "رمز التحقق",
+    "enterTheVerificationCode": "أدخل رمز التحقق الذي تلقيته",
+    "createNewPassword": "أنشئ كلمة مرور جديدة",
+    "newPasword": "كلمة المرور الجديدة"
 }

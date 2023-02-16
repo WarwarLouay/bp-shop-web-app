@@ -130,7 +130,7 @@ const Login = ({ onLogin }) => {
           <Group position="apart" mt="lg">
             <Checkbox label={`${t("rememberMe")}`} sx={{ lineHeight: 1 }} />
             <Anchor
-              onClick={(event) => event.preventDefault()}
+              onClick={() => navigate('/forgotpassword')}
               href="#"
               style={{ color: "#4C53A5" }}
               size="sm"

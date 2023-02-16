@@ -82,5 +82,14 @@
     "continue": "Continue",
     "edit": "Edit",
     "notice": "Notice",
-    "thankYou": "Thank you"
+    "thankYou": "Thank you",
+    "yourPasswordChanged": "Your password has been changed",
+    "verificationCodeIsIncorrect": "Verification code is incorrect",
+    "forgotYourPassword": "Forgot your password?",
+    "enterYourEmailToGetAVerificationCode": "Enter your email to get a verification code",
+    "backToLogin": "Back to login page",
+    "verificationCode": "Verification Code",
+    "enterTheVerificationCode": "Enter the verification code you recieved",
+    "createNewPassword": "Create a new password",
+    "newPasword": "New Password"
 }
