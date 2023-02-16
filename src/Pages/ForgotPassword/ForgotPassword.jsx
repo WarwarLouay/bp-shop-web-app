@@ -122,6 +122,11 @@ const ForgotPassword = () => {
     }
   };
 
+  const resendCode = async () => {
+    const data = { email };
+    await request.resendCode(data);
+  };
+
   return (
     <div className="fav">
       <div
@@ -198,7 +203,19 @@ const ForgotPassword = () => {
                 otpType="number"
                 disabled={false}
               />
-              <br />
+              <Group position="apart" mt="lg">
+                <Text color="dimmed" size="sm" align="center" mt={5}>
+                  Didn't get a verification code?
+                  <Anchor
+                    href="#"
+                    style={{ color: "#4C53A5" }}
+                    size="sm"
+                    onClick={resendCode}
+                  >
+                    Resend code
+                  </Anchor>
+                </Text>
+              </Group>
               <Button
                 style={{ backgroundColor: "#4C53A5" }}
                 onClick={verifyCode}

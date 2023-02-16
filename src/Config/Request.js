@@ -113,6 +113,11 @@ class Request {
     const link = "/api/user/changepassword";
     return await this.api.post(link, data);
   }
+
+  async resendCode(data) {
+    const link = "/api/user/resendcode";
+    return await this.api.post(link, data);
+  }
 }
 
 export default Request;
