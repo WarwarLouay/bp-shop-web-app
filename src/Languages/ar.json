@@ -91,5 +91,7 @@
     "verificationCode": "رمز التحقق",
     "enterTheVerificationCode": "أدخل رمز التحقق الذي تلقيته",
     "createNewPassword": "أنشئ كلمة مرور جديدة",
-    "newPasword": "كلمة المرور الجديدة"
+    "newPasword": "كلمة المرور الجديدة",
+    "didntGetVerificationCode": "لم تحصل على رمز التحقق؟",
+    "resend": "إعادة إرسال"
 }

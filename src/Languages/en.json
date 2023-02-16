@@ -91,5 +91,7 @@
     "verificationCode": "Verification Code",
     "enterTheVerificationCode": "Enter the verification code you recieved",
     "createNewPassword": "Create a new password",
-    "newPasword": "New Password"
+    "newPasword": "New Password",
+    "didntGetVerificationCode": "Didn't get a verification code?",
+    "resend": "Resend"
 }

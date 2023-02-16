@@ -229,7 +229,7 @@ const ForgotPassword = () => {
               />
               <Group position="apart" mt="lg">
                 <Text color="dimmed" size="sm" align="center" mt={5}>
-                  Didn't get a verification code?
+                  {t("didntGetVerificationCode")}
                 </Text>
                 {minutes > 0 || seconds > 0 ? (
                     <Text color="dimmed" size="sm" align="center" mt={5}>
@@ -237,11 +237,11 @@ const ForgotPassword = () => {
                     </Text>
                   ) : (
                     <Text
-                      style={{ color: "#4C53A5" }}
+                      style={{ color: "#4C53A5", cursor: "pointer" }}
                       size="sm"
                       onClick={resendCode}
                     >
-                      Resend
+                      {t("resend")}
                     </Text>
                   )}
               </Group>
